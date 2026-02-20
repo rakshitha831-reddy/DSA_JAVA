@@ -1,0 +1,2030 @@
+Personal Info (👤) - Name, email, phone, location, links
+Professional Summary (📝) - Career overview with tips
+Work Experience (💼) - Job history with descriptions
+Education (🎓) - Academic background with GPA
+Skills (⚡) - Technical, Languages, Soft Skills
+Projects (🚀) - Portfolio projects with tech stack
+Certifications (🏆) - Professional credentials
+Additional Sections (➕) - Custom content
+Review & Download (✅) - Final checklist and export
+
+import PersonalInfoStep from './components/Step1_PersonalInfo';
+import ProfessionalSummaryStep from './components/Step2_ProfessionalSummary';
+import WorkExperienceStep from './components/Step3_WorkExperience';
+import EducationStep from './components/Step4_Education';
+import SkillsStep from './components/Step5_Skills';
+import ProjectsStep from './components/Step6_Projects';
+import CertificationsStep from './components/Step7_Certifications';
+import AdditionalSectionsStep from './components/Step8_AdditionalSections';
+import ReviewDownloadStep from './components/Step9_ReviewDownload';
+
+
+
+///////////Personal Details////////
+import React from 'react';
+
+/**
+ * STEP 1: PERSONAL INFO COMPONENT
+ * Collects basic contact information
+ * 
+ * Props:
+ * - personalInfo: Object containing all personal information
+ * - setPersonalInfo: Function to update personal information
+ */
+
+export default function PersonalInfoStep({ personalInfo, setPersonalInfo }) {
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Full Name - Required */}
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          Full Name <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          placeholder="John Doe"
+          value={personalInfo.fullName}
+          onChange={(e) => setPersonalInfo({...personalInfo, fullName: e.target.value})}
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+        />
+      </div>
+
+      {/* Email and Phone */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Email <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            placeholder="john@example.com"
+            value={personalInfo.email}
+            onChange={(e) => setPersonalInfo({...personalInfo, email: e.target.value})}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Phone
+          </label>
+          <input
+            type="tel"
+            placeholder="+1 (555) 123-4567"
+            value={personalInfo.phone}
+            onChange={(e) => setPersonalInfo({...personalInfo, phone: e.target.value})}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+        </div>
+      </div>
+
+      {/* Location */}
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          Location
+        </label>
+        <input
+          type="text"
+          placeholder="New York, NY"
+          value={personalInfo.location}
+          onChange={(e) => setPersonalInfo({...personalInfo, location: e.target.value})}
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+        />
+      </div>
+
+      {/* LinkedIn and Portfolio */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            LinkedIn URL
+          </label>
+          <input
+            type="url"
+            placeholder="linkedin.com/in/johndoe"
+            value={personalInfo.linkedIn}
+            onChange={(e) => setPersonalInfo({...personalInfo, linkedIn: e.target.value})}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Portfolio URL
+          </label>
+          <input
+            type="url"
+            placeholder="johndoe.com"
+            value={personalInfo.portfolio}
+            onChange={(e) => setPersonalInfo({...personalInfo, portfolio: e.target.value})}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+        </div>
+      </div>
+
+      {/* Info Box */}
+      <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
+        <p className="text-sm text-blue-800">
+          💡 <strong>Tip:</strong> Make sure your email is professional and your phone number is correct.
+          LinkedIn and Portfolio links are optional but highly recommended!
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+import React from 'react';
+
+/**
+ * STEP 2: PROFESSIONAL SUMMARY COMPONENT
+ * Collects professional summary/objective
+ * 
+ * Props:
+ * - personalInfo: Object containing all personal information (including summary)
+ * - setPersonalInfo: Function to update personal information
+ */
+
+export default function ProfessionalSummaryStep({ personalInfo, setPersonalInfo }) {
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Professional Summary */}
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          Professional Summary <span className="text-red-500">*</span>
+        </label>
+        <p className="text-sm text-gray-600 mb-3">
+          Write 2-3 sentences highlighting your experience, skills, and career goals.
+        </p>
+        <textarea
+          placeholder="Experienced software developer with 5+ years in web technologies. Passionate about creating scalable applications and leading development teams. Seeking opportunities to leverage my technical expertise in a senior role."
+          value={personalInfo.summary}
+          onChange={(e) => setPersonalInfo({...personalInfo, summary: e.target.value})}
+          rows="6"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
+        />
+        
+        {/* Character Counter */}
+        <div className="flex justify-between items-center mt-2">
+          <p className={`text-sm ${personalInfo.summary.length > 20 ? 'text-green-600' : 'text-gray-500'}`}>
+            {personalInfo.summary.length} characters {personalInfo.summary.length > 20 && '✓'}
+          </p>
+          <p className="text-xs text-gray-500">
+            Recommended: 150-300 characters
+          </p>
+        </div>
+      </div>
+
+      {/* Tips Box */}
+      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border-l-4 border-purple-500 p-5 rounded-xl">
+        <h4 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
+          💡 Tips for a great summary
+        </h4>
+        <ul className="text-sm text-purple-800 space-y-2">
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Keep it concise (2-4 sentences)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Highlight your key strengths and experience</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Mention years of experience if applicable</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Include your career objective or goals</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Use action words and quantify achievements when possible</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Examples Box */}
+      <div className="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-purple-900 mb-2 text-sm">Example Summaries:</h5>
+        <div className="space-y-3 text-xs text-purple-800">
+          <p className="italic">
+            "Results-driven marketing professional with 8+ years of experience in digital strategy. 
+            Proven track record of increasing brand awareness by 150% and driving customer engagement 
+            through data-driven campaigns."
+          </p>
+          <p className="italic">
+            "Recent Computer Science graduate with a passion for machine learning and AI. 
+            Completed 3 major projects in Python and TensorFlow. Eager to apply theoretical 
+            knowledge to real-world problems in a dynamic tech environment."
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+import React from 'react';
+
+/**
+ * STEP 2: PROFESSIONAL SUMMARY COMPONENT
+ * Collects professional summary/objective
+ * 
+ * Props:
+ * - personalInfo: Object containing all personal information (including summary)
+ * - setPersonalInfo: Function to update personal information
+ */
+
+export default function ProfessionalSummaryStep({ personalInfo, setPersonalInfo }) {
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Professional Summary */}
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          Professional Summary <span className="text-red-500">*</span>
+        </label>
+        <p className="text-sm text-gray-600 mb-3">
+          Write 2-3 sentences highlighting your experience, skills, and career goals.
+        </p>
+        <textarea
+          placeholder="Experienced software developer with 5+ years in web technologies. Passionate about creating scalable applications and leading development teams. Seeking opportunities to leverage my technical expertise in a senior role."
+          value={personalInfo.summary}
+          onChange={(e) => setPersonalInfo({...personalInfo, summary: e.target.value})}
+          rows="6"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
+        />
+        
+        {/* Character Counter */}
+        <div className="flex justify-between items-center mt-2">
+          <p className={`text-sm ${personalInfo.summary.length > 20 ? 'text-green-600' : 'text-gray-500'}`}>
+            {personalInfo.summary.length} characters {personalInfo.summary.length > 20 && '✓'}
+          </p>
+          <p className="text-xs text-gray-500">
+            Recommended: 150-300 characters
+          </p>
+        </div>
+      </div>
+
+      {/* Tips Box */}
+      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border-l-4 border-purple-500 p-5 rounded-xl">
+        <h4 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
+          💡 Tips for a great summary
+        </h4>
+        <ul className="text-sm text-purple-800 space-y-2">
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Keep it concise (2-4 sentences)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Highlight your key strengths and experience</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Mention years of experience if applicable</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Include your career objective or goals</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-purple-500 mt-1">•</span>
+            <span>Use action words and quantify achievements when possible</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Examples Box */}
+      <div className="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-purple-900 mb-2 text-sm">Example Summaries:</h5>
+        <div className="space-y-3 text-xs text-purple-800">
+          <p className="italic">
+            "Results-driven marketing professional with 8+ years of experience in digital strategy. 
+            Proven track record of increasing brand awareness by 150% and driving customer engagement 
+            through data-driven campaigns."
+          </p>
+          <p className="italic">
+            "Recent Computer Science graduate with a passion for machine learning and AI. 
+            Completed 3 major projects in Python and TensorFlow. Eager to apply theoretical 
+            knowledge to real-world problems in a dynamic tech environment."
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+import React from 'react';
+import { Plus, Trash2, GraduationCap } from 'lucide-react';
+
+/**
+ * STEP 4: EDUCATION COMPONENT
+ * Manages multiple education entries
+ * 
+ * Props:
+ * - education: Array of education objects
+ * - setEducation: Function to update education array
+ */
+
+export default function EducationStep({ education, setEducation }) {
+  
+  // Add new education entry
+  const addEducation = () => {
+    setEducation([...education, { 
+      id: Date.now(), 
+      school: '', 
+      degree: '', 
+      field: '', 
+      startDate: '', 
+      endDate: '', 
+      gpa: '' 
+    }]);
+  };
+
+  // Remove education entry
+  const removeEducation = (id) => {
+    if (education.length > 1) {
+      setEducation(education.filter(edu => edu.id !== id));
+    }
+  };
+
+  // Update specific field in education entry
+  const updateEducation = (id, field, value) => {
+    setEducation(education.map(edu => 
+      edu.id === id ? { ...edu, [field]: value } : edu
+    ));
+  };
+
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Header with Add Button */}
+      <div className="flex justify-between items-center">
+        <p className="text-sm text-gray-600">
+          Add your educational background, starting with the most recent.
+        </p>
+        <button
+          onClick={addEducation}
+          className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 hover:scale-105 shadow-md text-sm"
+        >
+          <Plus size={16} />
+          Add
+        </button>
+      </div>
+
+      {/* Education Entries */}
+      {education.map((edu, index) => (
+        <div 
+          key={edu.id} 
+          className="bg-gradient-to-br from-gray-50 to-indigo-50 p-5 rounded-xl space-y-4 border-2 border-gray-200 hover:border-indigo-300 transition-all"
+        >
+          {/* Entry Header */}
+          <div className="flex justify-between items-center">
+            <h4 className="font-semibold text-gray-800 flex items-center gap-2">
+              <GraduationCap size={18} className="text-indigo-600" />
+              Education {index + 1}
+            </h4>
+            {education.length > 1 && (
+              <button
+                onClick={() => removeEducation(edu.id)}
+                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all"
+              >
+                <Trash2 size={18} />
+              </button>
+            )}
+          </div>
+
+          {/* School/University */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              School/University Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Harvard University, MIT, Stanford, etc."
+              value={edu.school}
+              onChange={(e) => updateEducation(edu.id, 'school', e.target.value)}
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+            />
+          </div>
+
+          {/* Degree and Field of Study */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Degree <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Bachelor's, Master's, Ph.D."
+                value={edu.degree}
+                onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Field of Study
+              </label>
+              <input
+                type="text"
+                placeholder="Computer Science, Business, etc."
+                value={edu.field}
+                onChange={(e) => updateEducation(edu.id, 'field', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              />
+            </div>
+          </div>
+
+          {/* Dates and GPA */}
+          <div className="grid grid-cols-3 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Start Date
+              </label>
+              <input
+                type="month"
+                value={edu.startDate}
+                onChange={(e) => updateEducation(edu.id, 'startDate', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                End Date
+              </label>
+              <input
+                type="month"
+                value={edu.endDate}
+                onChange={(e) => updateEducation(edu.id, 'endDate', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                GPA (optional)
+              </label>
+              <input
+                type="text"
+                placeholder="3.8"
+                value={edu.gpa}
+                onChange={(e) => updateEducation(edu.id, 'gpa', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              />
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="bg-indigo-50 border border-indigo-200 p-3 rounded-lg">
+            <p className="text-xs text-indigo-800">
+              💡 You can also add honors, awards, relevant coursework, or clubs/organizations here
+            </p>
+          </div>
+        </div>
+      ))}
+
+      {/* Tips Box */}
+      <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-lg">
+        <h5 className="font-semibold text-indigo-900 mb-2 text-sm">
+          💡 Tips for Education Section:
+        </h5>
+        <ul className="text-xs text-indigo-800 space-y-1">
+          <li>• List your most recent education first</li>
+          <li>• Include GPA only if it's 3.5 or above</li>
+          <li>• Mention relevant honors, scholarships, or Dean's List</li>
+          <li>• Add relevant coursework for entry-level positions</li>
+          <li>• Include certifications or bootcamps if relevant</li>
+        </ul>
+      </div>
+
+      {/* Common Degrees Reference */}
+      <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-900 mb-2 text-sm">
+          Common Degree Types:
+        </h5>
+        <div className="flex flex-wrap gap-2">
+          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Associate's</span>
+          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Bachelor's (BA/BS)</span>
+          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Master's (MA/MS/MBA)</span>
+          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Ph.D.</span>
+          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Professional Degree</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+import React from 'react';
+import { Plus } from 'lucide-react';
+
+/**
+ * STEP 5: SKILLS COMPONENT
+ * Manages three categories of skills: Technical, Languages, and Soft Skills
+ * 
+ * Props:
+ * - skills: Object with three arrays (technical, languages, soft)
+ * - setSkills: Function to update skills object
+ */
+
+export default function SkillsStep({ skills, setSkills }) {
+  
+  // Add skill to specific category
+  const addSkill = (category) => {
+    const categoryNames = {
+      technical: 'Technical Skill',
+      languages: 'Language',
+      soft: 'Soft Skill'
+    };
+    
+    const skill = prompt(`Add ${categoryNames[category]}:`);
+    if (skill && skill.trim()) {
+      setSkills({
+        ...skills,
+        [category]: [...skills[category], skill.trim()]
+      });
+    }
+  };
+
+  // Remove skill from specific category
+  const removeSkill = (category, index) => {
+    setSkills({
+      ...skills,
+      [category]: skills[category].filter((_, i) => i !== index)
+    });
+  };
+
+  return (
+    <div className="space-y-6 animate-fadeIn">
+      {/* Introduction */}
+      <p className="text-sm text-gray-600">
+        Add your skills in different categories. Click "Add" to input each skill one at a time.
+      </p>
+
+      {/* TECHNICAL SKILLS */}
+      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-5 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all">
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <h4 className="font-semibold text-blue-900 flex items-center gap-2 text-base">
+              💻 Technical Skills
+            </h4>
+            <p className="text-xs text-blue-700 mt-1">
+              Programming languages, frameworks, tools, software
+            </p>
+          </div>
+          <button
+            onClick={() => addSkill('technical')}
+            className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-blue-700 transition-all hover:scale-105 shadow-md"
+          >
+            <Plus size={16} />
+            Add
+          </button>
+        </div>
+        
+        <div className="flex flex-wrap gap-2">
+          {skills.technical.length === 0 ? (
+            <p className="text-sm text-blue-700 italic">
+              Click "Add" to add technical skills
+            </p>
+          ) : (
+            skills.technical.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-blue-600 text-white px-3 py-1.5 rounded-full text-sm flex items-center gap-2 shadow-sm hover:shadow-md transition-all"
+              >
+                {skill}
+                <button
+                  onClick={() => removeSkill('technical', index)}
+                  className="hover:bg-blue-700 rounded-full w-5 h-5 flex items-center justify-center"
+                  title="Remove skill"
+                >
+                  ×
+                </button>
+              </span>
+            ))
+          )}
+        </div>
+        
+        {/* Examples */}
+        <div className="mt-3 bg-blue-100 p-2 rounded text-xs text-blue-800">
+          <strong>Examples:</strong> JavaScript, Python, React, SQL, AWS, Docker, Git
+        </div>
+      </div>
+
+      {/* LANGUAGES */}
+      <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-xl border-2 border-green-200 hover:border-green-400 transition-all">
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <h4 className="font-semibold text-green-900 flex items-center gap-2 text-base">
+              🌍 Languages
+            </h4>
+            <p className="text-xs text-green-700 mt-1">
+              Spoken and written languages with proficiency levels
+            </p>
+          </div>
+          <button
+            onClick={() => addSkill('languages')}
+            className="flex items-center gap-1 bg-green-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-green-700 transition-all hover:scale-105 shadow-md"
+          >
+            <Plus size={16} />
+            Add
+          </button>
+        </div>
+        
+        <div className="flex flex-wrap gap-2">
+          {skills.languages.length === 0 ? (
+            <p className="text-sm text-green-700 italic">
+              Click "Add" to add languages
+            </p>
+          ) : (
+            skills.languages.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-green-600 text-white px-3 py-1.5 rounded-full text-sm flex items-center gap-2 shadow-sm hover:shadow-md transition-all"
+              >
+                {skill}
+                <button
+                  onClick={() => removeSkill('languages', index)}
+                  className="hover:bg-green-700 rounded-full w-5 h-5 flex items-center justify-center"
+                  title="Remove language"
+                >
+                  ×
+                </button>
+              </span>
+            ))
+          )}
+        </div>
+        
+        {/* Examples */}
+        <div className="mt-3 bg-green-100 p-2 rounded text-xs text-green-800">
+          <strong>Examples:</strong> English (Native), Spanish (Fluent), French (Intermediate), Mandarin (Basic)
+        </div>
+      </div>
+
+      {/* SOFT SKILLS */}
+      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-5 rounded-xl border-2 border-purple-200 hover:border-purple-400 transition-all">
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <h4 className="font-semibold text-purple-900 flex items-center gap-2 text-base">
+              🤝 Soft Skills
+            </h4>
+            <p className="text-xs text-purple-700 mt-1">
+              Interpersonal and professional attributes
+            </p>
+          </div>
+          <button
+            onClick={() => addSkill('soft')}
+            className="flex items-center gap-1 bg-purple-600 text-white px-3 py-1.5 rounded-lg text-sm hover:bg-purple-700 transition-all hover:scale-105 shadow-md"
+          >
+            <Plus size={16} />
+            Add
+          </button>
+        </div>
+        
+        <div className="flex flex-wrap gap-2">
+          {skills.soft.length === 0 ? (
+            <p className="text-sm text-purple-700 italic">
+              Click "Add" to add soft skills
+            </p>
+          ) : (
+            skills.soft.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-purple-600 text-white px-3 py-1.5 rounded-full text-sm flex items-center gap-2 shadow-sm hover:shadow-md transition-all"
+              >
+                {skill}
+                <button
+                  onClick={() => removeSkill('soft', index)}
+                  className="hover:bg-purple-700 rounded-full w-5 h-5 flex items-center justify-center"
+                  title="Remove skill"
+                >
+                  ×
+                </button>
+              </span>
+            ))
+          )}
+        </div>
+        
+        {/* Examples */}
+        <div className="mt-3 bg-purple-100 p-2 rounded text-xs text-purple-800">
+          <strong>Examples:</strong> Leadership, Communication, Problem Solving, Team Collaboration, Time Management
+        </div>
+      </div>
+
+      {/* Overall Tips */}
+      <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-4 rounded-lg">
+        <h5 className="font-semibold text-yellow-900 mb-2 text-sm">
+          💡 Tips for Skills Section:
+        </h5>
+        <ul className="text-xs text-yellow-800 space-y-1">
+          <li>• Be honest - only list skills you actually have</li>
+          <li>• Focus on skills relevant to the job you're applying for</li>
+          <li>• For technical skills, include proficiency level if helpful</li>
+          <li>• Order skills by relevance or proficiency</li>
+          <li>• Don't overload - aim for 5-10 skills per category</li>
+          <li>• Use industry-standard terminology</li>
+        </ul>
+      </div>
+
+      {/* Skill Level Guide */}
+      <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-900 mb-2 text-sm">
+          Proficiency Levels (Optional to include):
+        </h5>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+          <div className="bg-white p-2 rounded border">
+            <strong>Beginner:</strong> Basic knowledge
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Intermediate:</strong> Working knowledge
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Advanced:</strong> Extensive experience
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Expert:</strong> Mastery level
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+import React from 'react';
+import { Plus, Trash2, Rocket } from 'lucide-react';
+
+/**
+ * STEP 6: PROJECTS COMPONENT
+ * Manages portfolio projects (optional but recommended)
+ * 
+ * Props:
+ * - projects: Array of project objects
+ * - setProjects: Function to update projects array
+ */
+
+export default function ProjectsStep({ projects, setProjects }) {
+  
+  // Add new project entry
+  const addProject = () => {
+    setProjects([...projects, { 
+      id: Date.now(), 
+      name: '', 
+      description: '', 
+      technologies: '', 
+      link: '' 
+    }]);
+  };
+
+  // Remove project entry
+  const removeProject = (id) => {
+    if (projects.length > 1) {
+      setProjects(projects.filter(proj => proj.id !== id));
+    }
+  };
+
+  // Update specific field in project entry
+  const updateProject = (id, field, value) => {
+    setProjects(projects.map(proj => 
+      proj.id === id ? { ...proj, [field]: value } : proj
+    ));
+  };
+
+  // Skip this section
+  const skipSection = () => {
+    setProjects([{ id: 1, name: '', description: '', technologies: '', link: '' }]);
+  };
+
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Header with Add Button */}
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="text-sm text-gray-600">
+            Showcase your notable projects (optional but recommended for developers).
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Include personal projects, open source contributions, or major work projects
+          </p>
+        </div>
+        <button
+          onClick={addProject}
+          className="flex items-center gap-2 bg-gradient-to-r from-pink-600 to-rose-600 text-white px-4 py-2 rounded-lg hover:from-pink-700 hover:to-rose-700 transition-all duration-200 hover:scale-105 shadow-md text-sm"
+        >
+          <Plus size={16} />
+          Add
+        </button>
+      </div>
+
+      {/* Project Entries */}
+      {projects.map((proj, index) => (
+        <div 
+          key={proj.id} 
+          className="bg-gradient-to-br from-gray-50 to-pink-50 p-5 rounded-xl space-y-4 border-2 border-gray-200 hover:border-pink-300 transition-all"
+        >
+          {/* Entry Header */}
+          <div className="flex justify-between items-center">
+            <h4 className="font-semibold text-gray-800 flex items-center gap-2">
+              <Rocket size={18} className="text-pink-600" />
+              Project {index + 1}
+            </h4>
+            {projects.length > 1 && (
+              <button
+                onClick={() => removeProject(proj.id)}
+                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all"
+              >
+                <Trash2 size={18} />
+              </button>
+            )}
+          </div>
+
+          {/* Project Name */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              Project Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="E-commerce Platform, Weather App, Portfolio Website"
+              value={proj.name}
+              onChange={(e) => updateProject(proj.id, 'name', e.target.value)}
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+            />
+          </div>
+
+          {/* Project Description */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              Description
+            </label>
+            <textarea
+              placeholder="Describe what the project does, its purpose, and your specific role or contributions. Highlight key features and any challenges you overcame."
+              value={proj.description}
+              onChange={(e) => updateProject(proj.id, 'description', e.target.value)}
+              rows="4"
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all resize-none"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              💡 Focus on impact, features, and your specific contributions
+            </p>
+          </div>
+
+          {/* Technologies Used */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              Technologies Used
+            </label>
+            <input
+              type="text"
+              placeholder="React, Node.js, MongoDB, AWS, Docker"
+              value={proj.technologies}
+              onChange={(e) => updateProject(proj.id, 'technologies', e.target.value)}
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Separate multiple technologies with commas
+            </p>
+          </div>
+
+          {/* Project Link */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              Project Link (optional)
+            </label>
+            <input
+              type="url"
+              placeholder="https://github.com/username/project or https://myproject.com"
+              value={proj.link}
+              onChange={(e) => updateProject(proj.id, 'link', e.target.value)}
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Link to GitHub, live demo, or project documentation
+            </p>
+          </div>
+
+          {/* Project Stats/Metrics */}
+          <div className="bg-pink-50 border border-pink-200 p-3 rounded-lg">
+            <p className="text-xs text-pink-800">
+              <strong>💡 Pro tip:</strong> Add metrics if available (e.g., "Achieved 10,000+ downloads" or "Used by 500+ daily users")
+            </p>
+          </div>
+        </div>
+      ))}
+
+      {/* Skip Button */}
+      <div className="text-center">
+        <button
+          onClick={skipSection}
+          className="text-sm text-gray-500 hover:text-gray-700 underline"
+        >
+          Skip this section (not recommended for developers/technical roles)
+        </button>
+      </div>
+
+      {/* Tips Box */}
+      <div className="bg-pink-50 border-l-4 border-pink-500 p-4 rounded-lg">
+        <h5 className="font-semibold text-pink-900 mb-2 text-sm">
+          💡 Tips for Projects Section:
+        </h5>
+        <ul className="text-xs text-pink-800 space-y-1">
+          <li>• Choose projects that demonstrate relevant skills for the job</li>
+          <li>• Explain the problem you solved, not just what you built</li>
+          <li>• Mention your specific role if it was a team project</li>
+          <li>• Include quantifiable results or metrics when possible</li>
+          <li>• Provide working links to demos or source code</li>
+          <li>• Keep descriptions concise but informative (3-5 sentences)</li>
+        </ul>
+      </div>
+
+      {/* Project Types Reference */}
+      <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-900 mb-2 text-sm">
+          Types of Projects to Include:
+        </h5>
+        <div className="grid grid-cols-2 gap-2 text-xs">
+          <div className="bg-white p-2 rounded border">
+            <strong>Personal Projects:</strong> Side projects you built independently
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Open Source:</strong> Contributions to public repositories
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Academic:</strong> Major school projects or capstone
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Freelance:</strong> Client work (with permission)
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Hackathons:</strong> Competition projects and awards
+          </div>
+          <div className="bg-white p-2 rounded border">
+            <strong>Work Projects:</strong> Public-facing work (if allowed)
+          </div>
+        </div>
+      </div>
+
+      {/* Example Box */}
+      <div className="bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-pink-900 mb-2 text-sm">
+          📝 Example Project Entry:
+        </h5>
+        <div className="bg-white p-3 rounded text-xs text-gray-800 space-y-2">
+          <p><strong>Project:</strong> Task Management Dashboard</p>
+          <p><strong>Description:</strong> Built a full-stack web application for managing team tasks and projects. 
+          Implemented real-time collaboration features using WebSockets. Achieved 95% user satisfaction rate 
+          in beta testing with 200+ users.</p>
+          <p><strong>Technologies:</strong> React, Node.js, Express, PostgreSQL, Socket.io, AWS</p>
+          <p><strong>Link:</strong> github.com/username/task-dashboard</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+import React from 'react';
+import { Plus, Trash2, Award } from 'lucide-react';
+
+/**
+ * STEP 7: CERTIFICATIONS COMPONENT
+ * Manages professional certifications and credentials (optional)
+ * 
+ * Props:
+ * - certifications: Array of certification objects
+ * - setCertifications: Function to update certifications array
+ */
+
+export default function CertificationsStep({ certifications, setCertifications }) {
+  
+  // Add new certification entry
+  const addCertification = () => {
+    setCertifications([...certifications, { 
+      id: Date.now(), 
+      name: '', 
+      issuer: '', 
+      date: '', 
+      credentialId: '' 
+    }]);
+  };
+
+  // Remove certification entry
+  const removeCertification = (id) => {
+    if (certifications.length > 1) {
+      setCertifications(certifications.filter(cert => cert.id !== id));
+    }
+  };
+
+  // Update specific field in certification entry
+  const updateCertification = (id, field, value) => {
+    setCertifications(certifications.map(cert => 
+      cert.id === id ? { ...cert, [field]: value } : cert
+    ));
+  };
+
+  // Skip this section
+  const skipSection = () => {
+    setCertifications([{ id: 1, name: '', issuer: '', date: '', credentialId: '' }]);
+  };
+
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Header with Add Button */}
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="text-sm text-gray-600">
+            Add your professional certifications (optional).
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Include industry certifications, licenses, or online course completions
+          </p>
+        </div>
+        <button
+          onClick={addCertification}
+          className="flex items-center gap-2 bg-gradient-to-r from-orange-600 to-amber-600 text-white px-4 py-2 rounded-lg hover:from-orange-700 hover:to-amber-700 transition-all duration-200 hover:scale-105 shadow-md text-sm"
+        >
+          <Plus size={16} />
+          Add
+        </button>
+      </div>
+
+      {/* Certification Entries */}
+      {certifications.map((cert, index) => (
+        <div 
+          key={cert.id} 
+          className="bg-gradient-to-br from-gray-50 to-orange-50 p-5 rounded-xl space-y-4 border-2 border-gray-200 hover:border-orange-300 transition-all"
+        >
+          {/* Entry Header */}
+          <div className="flex justify-between items-center">
+            <h4 className="font-semibold text-gray-800 flex items-center gap-2">
+              <Award size={18} className="text-orange-600" />
+              Certification {index + 1}
+            </h4>
+            {certifications.length > 1 && (
+              <button
+                onClick={() => removeCertification(cert.id)}
+                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all"
+              >
+                <Trash2 size={18} />
+              </button>
+            )}
+          </div>
+
+          {/* Certification Name */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              Certification Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="AWS Certified Solutions Architect, PMP, Google Analytics Certification"
+              value={cert.name}
+              onChange={(e) => updateCertification(cert.id, 'name', e.target.value)}
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+            />
+          </div>
+
+          {/* Issuing Organization and Date */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Issuing Organization
+              </label>
+              <input
+                type="text"
+                placeholder="Amazon Web Services, PMI, Google"
+                value={cert.issuer}
+                onChange={(e) => updateCertification(cert.id, 'issuer', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Issue Date
+              </label>
+              <input
+                type="month"
+                value={cert.date}
+                onChange={(e) => updateCertification(cert.id, 'date', e.target.value)}
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              />
+            </div>
+          </div>
+
+          {/* Credential ID */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1">
+              Credential ID (optional)
+            </label>
+            <input
+              type="text"
+              placeholder="ABC123XYZ"
+              value={cert.credentialId}
+              onChange={(e) => updateCertification(cert.id, 'credentialId', e.target.value)}
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Add the credential ID or license number if available
+            </p>
+          </div>
+
+          {/* Additional Info */}
+          <div className="bg-orange-50 border border-orange-200 p-3 rounded-lg">
+            <p className="text-xs text-orange-800">
+              <strong>💡 Pro tip:</strong> Add expiration date in the description if the certification expires
+            </p>
+          </div>
+        </div>
+      ))}
+
+      {/* Skip Button */}
+      <div className="text-center">
+        <button
+          onClick={skipSection}
+          className="text-sm text-gray-500 hover:text-gray-700 underline"
+        >
+          Skip this section
+        </button>
+      </div>
+
+      {/* Tips Box */}
+      <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-lg">
+        <h5 className="font-semibold text-orange-900 mb-2 text-sm">
+          💡 Tips for Certifications Section:
+        </h5>
+        <ul className="text-xs text-orange-800 space-y-1">
+          <li>• List certifications relevant to your target role</li>
+          <li>• Include both industry certifications and online courses</li>
+          <li>• Add credential IDs to verify authenticity</li>
+          <li>• Mention if certification is in progress</li>
+          <li>• List most recent or most relevant certifications first</li>
+          <li>• Include expiration dates for time-sensitive certifications</li>
+        </ul>
+      </div>
+
+      {/* Popular Certifications by Industry */}
+      <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-900 mb-3 text-sm">
+          Popular Certifications by Industry:
+        </h5>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-blue-700">Tech & IT:</strong>
+            <ul className="mt-1 space-y-0.5 text-gray-700">
+              <li>• AWS Certified Solutions Architect</li>
+              <li>• Google Cloud Professional</li>
+              <li>• CompTIA A+, Network+, Security+</li>
+              <li>• Cisco CCNA</li>
+              <li>• Microsoft Azure Administrator</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-green-700">Project Management:</strong>
+            <ul className="mt-1 space-y-0.5 text-gray-700">
+              <li>• PMP (Project Management Professional)</li>
+              <li>• Scrum Master (CSM)</li>
+              <li>• PRINCE2</li>
+              <li>• Six Sigma Black Belt</li>
+              <li>• Agile Certified Practitioner</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-purple-700">Data & Analytics:</strong>
+            <ul className="mt-1 space-y-0.5 text-gray-700">
+              <li>• Google Data Analytics Professional</li>
+              <li>• Tableau Desktop Specialist</li>
+              <li>• Microsoft Power BI</li>
+              <li>• SAS Certified Specialist</li>
+              <li>• Cloudera Certified Associate</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-orange-700">Marketing & Sales:</strong>
+            <ul className="mt-1 space-y-0.5 text-gray-700">
+              <li>• Google Ads Certification</li>
+              <li>• HubSpot Inbound Marketing</li>
+              <li>• Facebook Blueprint</li>
+              <li>• Salesforce Administrator</li>
+              <li>• Hootsuite Social Marketing</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-red-700">Finance & Accounting:</strong>
+            <ul className="mt-1 space-y-0.5 text-gray-700">
+              <li>• CPA (Certified Public Accountant)</li>
+              <li>• CFA (Chartered Financial Analyst)</li>
+              <li>• CMA (Certified Management Accountant)</li>
+              <li>• QuickBooks Certified User</li>
+              <li>• Financial Risk Manager (FRM)</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-indigo-700">Design & Creative:</strong>
+            <ul className="mt-1 space-y-0.5 text-gray-700">
+              <li>• Adobe Certified Professional</li>
+              <li>• Google UX Design Certificate</li>
+              <li>• Certified ScrumMaster (for UX)</li>
+              <li>• Nielsen Norman Group UX</li>
+              <li>• Interaction Design Foundation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Online Learning Platforms */}
+      <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-orange-900 mb-2 text-sm">
+          📚 Recognized Online Learning Platforms:
+        </h5>
+        <div className="flex flex-wrap gap-2">
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">Coursera</span>
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">edX</span>
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">Udacity</span>
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">LinkedIn Learning</span>
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">Pluralsight</span>
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">DataCamp</span>
+          <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">Udemy</span>
+        </div>
+        <p className="text-xs text-orange-700 mt-2">
+          Certificates from these platforms are valuable, especially for continuous learning
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+import React from 'react';
+import { Plus, Trash2, PlusCircle } from 'lucide-react';
+
+/**
+ * STEP 8: ADDITIONAL SECTIONS COMPONENT
+ * Allows users to add custom sections for any additional information
+ * 
+ * Props:
+ * - customSections: Array of custom section objects
+ * - setCustomSections: Function to update custom sections array
+ */
+
+export default function AdditionalSectionsStep({ customSections, setCustomSections }) {
+  
+  // Add new custom section
+  const addCustomSection = () => {
+    const title = prompt('Section title (e.g., Awards, Volunteer Work, Publications):');
+    if (title && title.trim()) {
+      setCustomSections([...customSections, {
+        id: Date.now(),
+        title: title.trim(),
+        content: ''
+      }]);
+    }
+  };
+
+  // Remove custom section
+  const removeCustomSection = (id) => {
+    setCustomSections(customSections.filter(section => section.id !== id));
+  };
+
+  // Update specific field in custom section
+  const updateCustomSection = (id, field, value) => {
+    setCustomSections(customSections.map(section => 
+      section.id === id ? { ...section, [field]: value } : section
+    ));
+  };
+
+  return (
+    <div className="space-y-5 animate-fadeIn">
+      {/* Header with Add Button */}
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="text-sm text-gray-600">
+            Add custom sections for any additional information you want to include.
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Examples: Awards, Publications, Volunteer Work, Speaking Engagements, Hobbies
+          </p>
+        </div>
+        <button
+          onClick={addCustomSection}
+          className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg hover:from-teal-700 hover:to-cyan-700 transition-all duration-200 hover:scale-105 shadow-md text-sm"
+        >
+          <Plus size={16} />
+          Add Section
+        </button>
+      </div>
+
+      {/* Empty State */}
+      {customSections.length === 0 ? (
+        <div className="bg-gradient-to-br from-gray-50 to-teal-50 border-2 border-dashed border-gray-300 rounded-xl p-12 text-center">
+          <PlusCircle size={64} className="mx-auto text-gray-400 mb-4" />
+          <p className="text-gray-600 mb-3 font-semibold text-lg">No custom sections added yet</p>
+          <p className="text-sm text-gray-500 mb-6">
+            Click "Add Section" above to include additional information like:
+          </p>
+          <div className="flex flex-wrap gap-2 justify-center max-w-2xl mx-auto">
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">🏆 Awards & Honors</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">📚 Publications</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">🤝 Volunteer Work</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">🎤 Speaking Engagements</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">🎨 Hobbies & Interests</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">👥 Professional Memberships</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">🌍 Languages</span>
+            <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">📝 Patents</span>
+          </div>
+        </div>
+      ) : (
+        /* Custom Section Entries */
+        customSections.map((section) => (
+          <div 
+            key={section.id} 
+            className="bg-gradient-to-br from-gray-50 to-teal-50 p-5 rounded-xl space-y-4 border-2 border-gray-200 hover:border-teal-300 transition-all"
+          >
+            {/* Section Title */}
+            <div className="flex justify-between items-start">
+              <div className="flex-1 mr-2">
+                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  Section Title
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g., Awards, Volunteer Work, Publications"
+                  value={section.title}
+                  onChange={(e) => updateCustomSection(section.id, 'title', e.target.value)}
+                  className="w-full font-semibold text-lg text-gray-800 px-3 py-2 border-2 border-teal-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white"
+                />
+              </div>
+              <button
+                onClick={() => removeCustomSection(section.id)}
+                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all mt-6"
+              >
+                <Trash2 size={18} />
+              </button>
+            </div>
+
+            {/* Section Content */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Content
+              </label>
+              <textarea
+                placeholder="Add the content for this section. You can use bullet points or paragraphs to describe the information."
+                value={section.content}
+                onChange={(e) => updateCustomSection(section.id, 'content', e.target.value)}
+                rows="6"
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all resize-none"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                💡 Use bullet points or paragraphs to organize your content
+              </p>
+            </div>
+          </div>
+        ))
+      )}
+
+      {/* Tips Box */}
+      <div className="bg-teal-50 border-l-4 border-teal-500 p-4 rounded-lg">
+        <h5 className="font-semibold text-teal-900 mb-2 text-sm">
+          💡 Tips for Additional Sections:
+        </h5>
+        <ul className="text-xs text-teal-800 space-y-1">
+          <li>• Only add sections that add value to your application</li>
+          <li>• Keep content relevant to the job you're applying for</li>
+          <li>• Be specific with dates, names, and achievements</li>
+          <li>• Don't add a section unless you have substantial content</li>
+          <li>• Consider what makes you unique as a candidate</li>
+        </ul>
+      </div>
+
+      {/* Common Additional Sections Guide */}
+      <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-900 mb-3 text-sm">
+          Common Additional Sections & When to Use Them:
+        </h5>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              🏆 Awards & Honors
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Include academic awards, employee of the month, industry recognition, or competition wins.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Employee of the Year 2023, ABC Corp"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              📚 Publications
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Research papers, articles, blog posts, or books you've authored or co-authored.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Machine Learning in Healthcare, Journal of AI, 2024"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              🤝 Volunteer Work
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Community service, pro bono work, or volunteer positions that demonstrate leadership and values.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Food Bank Coordinator, Local Community Center (2022-Present)"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              🎤 Speaking Engagements
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Conferences, workshops, webinars, or presentations you've delivered.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Keynote Speaker, Tech Summit 2024 - 'Future of AI'"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              👥 Professional Memberships
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Industry associations, professional organizations, or networking groups.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Member, American Marketing Association (AMA)"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              📝 Patents & Intellectual Property
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Patents filed or granted, trademarks, or other IP you've created.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Patent #US1234567 - Method for Data Compression"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              🎨 Hobbies & Interests (Optional)
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Relevant hobbies that demonstrate skills or cultural fit. Use sparingly.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "Marathon runner, Chess player, Photography enthusiast"
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-teal-700 flex items-center gap-1">
+              🌟 Leadership Positions
+            </strong>
+            <p className="mt-1 text-gray-700">
+              Leadership roles in clubs, organizations, or community groups.
+            </p>
+            <p className="mt-1 text-gray-500 italic">
+              Example: "President, University Debate Club (2022-2024)"
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Warning Box */}
+      <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg">
+        <h5 className="font-semibold text-yellow-900 mb-2 text-sm flex items-center gap-2">
+          ⚠️ What NOT to Include:
+        </h5>
+        <ul className="text-xs text-yellow-800 space-y-1">
+          <li>• Personal information (age, marital status, religion, photo)</li>
+          <li>• Irrelevant hobbies that don't add professional value</li>
+          <li>• Controversial topics (politics, religion)</li>
+          <li>• References (use "Available upon request" instead)</li>
+          <li>• Salary information or requirements</li>
+        </ul>
+      </div>
+
+      {/* Example Sections */}
+      <div className="bg-gradient-to-r from-teal-50 to-cyan-50 border border-teal-200 p-4 rounded-lg">
+        <h5 className="font-semibold text-teal-900 mb-3 text-sm">
+          📝 Example Custom Sections:
+        </h5>
+        
+        <div className="space-y-3">
+          <div className="bg-white p-3 rounded border text-xs">
+            <strong className="text-gray-900 block mb-1">Awards & Recognition</strong>
+            <p className="text-gray-700">
+              • Employee of the Year 2023, TechCorp Inc.<br/>
+              • Best Innovation Award, Annual Hackathon 2022<br/>
+              • Dean's List, All Semesters (2018-2022)
+            </p>
+          </div>
+
+          <div className="bg-white p-3 rounded border text-xs">
+            <strong className="text-gray-900 block mb-1">Volunteer Experience</strong>
+            <p className="text-gray-700">
+              <strong>Coding Mentor</strong> - Code for Good (2023-Present)<br/>
+              Teaching underprivileged youth basic programming skills. Mentored 20+ students, 
+              with 15 successfully completing beginner projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+import React from 'react';
+import { Download, Check, User, FileText, Briefcase, GraduationCap, Zap, Rocket, Award, PlusCircle } from 'lucide-react';
+
+/**
+ * STEP 9: REVIEW & DOWNLOAD COMPONENT
+ * Final step showing completion status and download options
+ * 
+ * Props:
+ * - personalInfo: Object containing personal information
+ * - experience: Array of experience objects
+ * - education: Array of education objects
+ * - skills: Object with skill arrays
+ * - projects: Array of project objects
+ * - certifications: Array of certification objects
+ * - customSections: Array of custom section objects
+ * - downloadResume: Function to download resume data
+ * - isStepComplete: Function to check if a step is complete
+ */
+
+export default function ReviewDownloadStep({ 
+  personalInfo, 
+  experience, 
+  education, 
+  skills, 
+  projects, 
+  certifications, 
+  customSections,
+  downloadResume,
+  isStepComplete 
+}) {
+  
+  // Calculate completion percentage
+  const completedSteps = [0, 1, 2, 3, 4].filter(step => isStepComplete(step)).length;
+  const totalRequiredSteps = 5;
+  const completionPercentage = Math.round((completedSteps / totalRequiredSteps) * 100);
+
+  return (
+    <div className="space-y-6 animate-fadeIn">
+      
+      {/* Success Message */}
+      <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-6 rounded-xl">
+        <h4 className="font-semibold text-green-900 mb-2 flex items-center gap-2 text-xl">
+          🎉 Congratulations! Your Resume is Ready!
+        </h4>
+        <p className="text-sm text-green-800 mb-3">
+          Review your resume information below. When you're satisfied, download your resume data as a JSON file.
+        </p>
+        <div className="bg-green-100 rounded-lg p-3 mt-3">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm font-semibold text-green-900">Completion Status:</span>
+            <span className="text-sm font-bold text-green-900">{completionPercentage}%</span>
+          </div>
+          <div className="w-full bg-green-200 rounded-full h-3">
+            <div 
+              className="bg-green-600 h-3 rounded-full transition-all duration-500"
+              style={{ width: `${completionPercentage}%` }}
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Completion Checklist */}
+      <div className="space-y-4">
+        <h3 className="font-semibold text-gray-800 text-lg flex items-center gap-2">
+          <Check className="text-green-600" size={20} />
+          Resume Sections Status
+        </h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            { label: 'Personal Info', complete: isStepComplete(0), icon: User, required: true },
+            { label: 'Professional Summary', complete: isStepComplete(1), icon: FileText, required: true },
+            { label: 'Work Experience', complete: isStepComplete(2), icon: Briefcase, required: true },
+            { label: 'Education', complete: isStepComplete(3), icon: GraduationCap, required: true },
+            { label: 'Skills', complete: isStepComplete(4), icon: Zap, required: true },
+            { label: 'Projects', complete: projects.some(p => p.name), icon: Rocket, required: false },
+            { label: 'Certifications', complete: certifications.some(c => c.name), icon: Award, required: false },
+            { label: 'Custom Sections', complete: customSections.length > 0, icon: PlusCircle, required: false },
+          ].map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div 
+                key={idx} 
+                className={`flex items-center gap-3 p-4 rounded-xl transition-all border-2 ${
+                  item.complete 
+                    ? 'bg-green-50 border-green-200 shadow-sm' 
+                    : item.required
+                    ? 'bg-red-50 border-red-200'
+                    : 'bg-gray-50 border-gray-200'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                  item.complete ? 'bg-green-500' : item.required ? 'bg-red-400' : 'bg-gray-300'
+                }`}>
+                  {item.complete ? (
+                    <Check size={20} className="text-white" />
+                  ) : (
+                    <Icon size={20} className="text-white" />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <span className={`text-sm font-medium block ${
+                    item.complete ? 'text-green-900' : item.required ? 'text-red-900' : 'text-gray-600'
+                  }`}>
+                    {item.label}
+                  </span>
+                  <span className={`text-xs ${
+                    item.complete ? 'text-green-700' : item.required ? 'text-red-700' : 'text-gray-500'
+                  }`}>
+                    {item.complete 
+                      ? '✓ Completed' 
+                      : item.required 
+                      ? '⚠️ Required' 
+                      : 'Optional'}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Content Summary */}
+      <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+        <h4 className="font-semibold text-blue-900 mb-3 text-sm">
+          📊 Resume Content Summary:
+        </h4>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+          <div className="bg-white p-3 rounded text-center border">
+            <div className="text-2xl font-bold text-blue-600">
+              {experience.filter(e => e.company).length}
+            </div>
+            <div className="text-gray-600 mt-1">Work Experiences</div>
+          </div>
+          <div className="bg-white p-3 rounded text-center border">
+            <div className="text-2xl font-bold text-indigo-600">
+              {education.filter(e => e.school).length}
+            </div>
+            <div className="text-gray-600 mt-1">Education Entries</div>
+          </div>
+          <div className="bg-white p-3 rounded text-center border">
+            <div className="text-2xl font-bold text-purple-600">
+              {skills.technical.length + skills.languages.length + skills.soft.length}
+            </div>
+            <div className="text-gray-600 mt-1">Total Skills</div>
+          </div>
+          <div className="bg-white p-3 rounded text-center border">
+            <div className="text-2xl font-bold text-pink-600">
+              {projects.filter(p => p.name).length + certifications.filter(c => c.name).length + customSections.length}
+            </div>
+            <div className="text-gray-600 mt-1">Additional Items</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Next Steps Guide */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-5 rounded-xl">
+        <h4 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
+          💡 Next Steps - How to Use Your Resume
+        </h4>
+        <ol className="text-sm text-blue-800 space-y-2">
+          <li className="flex items-start gap-3">
+            <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</span>
+            <span><strong>Download your data:</strong> Click the button below to save your resume as a JSON file</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</span>
+            <span><strong>Choose your format:</strong> Transfer content to Word, Google Docs, or a resume template</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</span>
+            <span><strong>Customize design:</strong> Apply formatting, fonts, colors that match your style</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">4</span>
+            <span><strong>Proofread carefully:</strong> Check for typos, grammar, and accuracy</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">5</span>
+            <span><strong>Tailor for each job:</strong> Adjust content to match specific job requirements</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">6</span>
+            <span><strong>Save in multiple formats:</strong> Keep PDF for applications, Word for editing</span>
+          </li>
+        </ol>
+      </div>
+
+      {/* Resume Tips */}
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 p-4 rounded-xl">
+        <h4 className="font-semibold text-purple-900 mb-3 text-sm">
+          🎯 Final Resume Tips:
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-purple-700 block mb-1">✓ Do:</strong>
+            <ul className="text-gray-700 space-y-1">
+              <li>• Keep it to 1-2 pages (1 page for early career)</li>
+              <li>• Use action verbs and quantify achievements</li>
+              <li>• Maintain consistent formatting throughout</li>
+              <li>• Use professional fonts (Arial, Calibri, Times)</li>
+              <li>• Include keywords from job descriptions</li>
+              <li>• Save as PDF for applications</li>
+            </ul>
+          </div>
+          <div className="bg-white p-3 rounded border">
+            <strong className="text-red-700 block mb-1">✗ Don't:</strong>
+            <ul className="text-gray-700 space-y-1">
+              <li>• Use personal pronouns (I, me, my)</li>
+              <li>• Include salary information</li>
+              <li>• Add photos (unless required in your country)</li>
+              <li>• Use unprofessional email addresses</li>
+              <li>• Include references on resume</li>
+              <li>• Use overly decorative fonts or colors</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Warning for Incomplete Sections */}
+      {completionPercentage < 100 && (
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-xl">
+          <h4 className="font-semibold text-yellow-900 mb-2 flex items-center gap-2">
+            ⚠️ Some Required Sections Are Incomplete
+          </h4>
+          <p className="text-sm text-yellow-800">
+            You can still download your resume data, but we recommend completing all required sections 
+            for the best results. Use the navigation above to go back and fill in missing information.
+          </p>
+        </div>
+      )}
+
+      {/* Download Button */}
+      <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 p-6 rounded-xl">
+        <h4 className="font-semibold text-gray-900 mb-3 text-center text-lg">
+          Ready to Download?
+        </h4>
+        <p className="text-sm text-gray-600 text-center mb-4">
+          Your resume data will be saved as a JSON file that you can use to import into other tools 
+          or keep as a backup.
+        </p>
+        <button
+          onClick={downloadResume}
+          className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-5 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-200 hover:scale-105 shadow-xl text-lg font-semibold"
+        >
+          <Download size={28} />
+          Download Resume Data (JSON)
+        </button>
+        <p className="text-xs text-gray-500 text-center mt-3">
+          File will be named: resume-{personalInfo.fullName.replace(/\s+/g, '-').toLowerCase() || 'data'}.json
+        </p>
+      </div>
+
+      {/* Additional Resources */}
+      <div className="bg-gray-50 border border-gray-200 p-4 rounded-xl">
+        <h4 className="font-semibold text-gray-900 mb-3 text-sm">
+          📚 Additional Resources:
+        </h4>
+        <div className="space-y-2 text-xs text-gray-700">
+          <p><strong>Resume Templates:</strong> Canva, Microsoft Word templates, Google Docs templates</p>
+          <p><strong>ATS-Friendly:</strong> Use simple formatting to ensure Applicant Tracking Systems can read your resume</p>
+          <p><strong>Cover Letters:</strong> Don't forget to write a tailored cover letter for each application</p>
+          <p><strong>LinkedIn:</strong> Keep your LinkedIn profile updated with the same information</p>
+          <p><strong>Job Boards:</strong> Indeed, LinkedIn Jobs, Glassdoor, company career pages</p>
+        </div>
+      </div>
+
+      {/* Motivational Message */}
+      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 rounded-xl text-center">
+        <h4 className="text-2xl font-bold mb-2">Good Luck! 🚀</h4>
+        <p className="text-indigo-100">
+          You've taken an important step in your career journey. 
+          Remember to tailor your resume for each application and stay confident!
+        </p>
+      </div>
+
+    </div>
+  );
+}
+
+
+
+
+
+
+Make sure you have these dependencies installed:
+npm install lucide-react
+
+State Management
+const [currentStep, setCurrentStep] = useState(0);
+
+// Step 1: Personal Info
+const [personalInfo, setPersonalInfo] = useState({
+  fullName: '',
+  email: '',
+  phone: '',
+  location: '',
+  linkedIn: '',
+  portfolio: '',
+  summary: ''
+});
+
+// Step 3: Work Experience
+const [experience, setExperience] = useState([
+  { id: 1, company: '', position: '', startDate: '', endDate: '', current: false, description: '' }
+]);
+
+// Step 4: Education
+const [education, setEducation] = useState([
+  { id: 1, school: '', degree: '', field: '', startDate: '', endDate: '', gpa: '' }
+]);
+
+// Step 5: Skills
+const [skills, setSkills] = useState({
+  technical: [],
+  languages: [],
+  soft: []
+});
+
+// Step 6: Projects
+const [projects, setProjects] = useState([
+  { id: 1, name: '', description: '', technologies: '', link: '' }
+]);
+
+// Step 7: Certifications
+const [certifications, setCertifications] = useState([
+  { id: 1, name: '', issuer: '', date: '', credentialId: '' }
+]);
+
+// Step 8: Custom Sections
+const [customSections, setCustomSections] = useState([]);
+
+
+
+
+
+Render Components Based on Current Step
+{currentStep === 0 && (
+  <PersonalInfoStep 
+    personalInfo={personalInfo}
+    setPersonalInfo={setPersonalInfo}
+  />
+)}
+
+{currentStep === 1 && (
+  <ProfessionalSummaryStep 
+    personalInfo={personalInfo}
+    setPersonalInfo={setPersonalInfo}
+  />
+)}
+
+{currentStep === 2 && (
+  <WorkExperienceStep 
+    experience={experience}
+    setExperience={setExperience}
+  />
+)}
+
+{currentStep === 3 && (
+  <EducationStep 
+    education={education}
+    setEducation={setEducation}
+  />
+)}
+
+{currentStep === 4 && (
+  <SkillsStep 
+    skills={skills}
+    setSkills={setSkills}
+  />
+)}
+
+{currentStep === 5 && (
+  <ProjectsStep 
+    projects={projects}
+    setProjects={setProjects}
+  />
+)}
+
+{currentStep === 6 && (
+  <CertificationsStep 
+    certifications={certifications}
+    setCertifications={setCertifications}
+  />
+)}
+
+{currentStep === 7 && (
+  <AdditionalSectionsStep 
+    customSections={customSections}
+    setCustomSections={setCustomSections}
+  />
+)}
+
+{currentStep === 8 && (
+  <ReviewDownloadStep 
+    personalInfo={personalInfo}
+    experience={experience}
+    education={education}
+    skills={skills}
+    projects={projects}
+    certifications={certifications}
+    customSections={customSections}
+    downloadResume={downloadResume}
+    isStepComplete={isStepComplete}
+  />
+)}
+
+
+
+Helper Functions
+// Navigation
+const nextStep = () => {
+  if (currentStep < 8) {
+    setCurrentStep(currentStep + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+const prevStep = () => {
+  if (currentStep > 0) {
+    setCurrentStep(currentStep - 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+// Validation
+const isStepComplete = (stepId) => {
+  switch(stepId) {
+    case 0: return personalInfo.fullName && personalInfo.email;
+    case 1: return personalInfo.summary.length > 20;
+    case 2: return experience.some(exp => exp.company && exp.position);
+    case 3: return education.some(edu => edu.school && edu.degree);
+    case 4: return skills.technical.length > 0 || skills.languages.length > 0 || skills.soft.length > 0;
+    case 5: return projects.some(proj => proj.name);
+    case 6: return certifications.some(cert => cert.name);
+    case 7: return true;
+    default: return false;
+  }
+};
+
+// Download
+const downloadResume = () => {
+  const resumeData = {
+    personalInfo,
+    experience,
+    education,
+    skills,
+    projects,
+    certifications,
+    customSections,
+    generatedDate: new Date().toISOString()
+  };
+  
+  const blob = new Blob([JSON.stringify(resumeData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `resume-${personalInfo.fullName.replace(/\s+/g, '-').toLowerCase() || 'data'}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+
